@@ -18,7 +18,7 @@ class fetchmail_server(models.Model):
     _inherit = "fetchmail.server"
     url=fields.Char()
     client_id=fields.Char()
-    oauth2=fields.Boolean(help="When using oauth2, password is the cliet secret")
+    oauth2=fields.Boolean(help="When using oauth2, password is the client secret")
 
     def connect(self):
         
@@ -58,11 +58,6 @@ class fetchmail_server(models.Model):
         else:
             connection=super(fetchmail_server, self).connect()
         return connection
-
-    def _fetch_mails(self):
-        if not ids:
-            ids = self.search(cr, uid, [('state','=','done'),('type','in',['pop','imap'])])
-        return self.fetch_mail(cr, uid, ids, context=context)
 
 
 
