@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_email_server_form_oauth2">
+            <field name="name">fetchmail.server.form</field>
+            <field name="model">fetchmail.server</field>
+            <field name="inherit_id" ref="fetchmail.view_email_server_form"/>
+            <field name="arch" type="xml">
+               <field name="password" position="after">
+                    <field name='oauth2' attrs="{'invisible' : [('type', '!=', 'imap')]}"/>
+                    <field name='url' attrs="{'invisible' : [('oauth2', '!=', True)]}" />
+                    <field name='client_id' attrs="{'invisible' : [('oauth2', '!=', True)]}"/>
+               </field>
+            </field>
+        </record>
+    </data>
+</openerp>
+
+
