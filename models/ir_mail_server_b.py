@@ -50,19 +50,20 @@ class ir_mail_server(models.Model):
                body_alternative=None, subtype_alternative='plain'):
           
           defaultdomain=tools.config.get('mail_domain')
-          defaultfrom=tools.config.get('mail_from')
-          adress=extract_rfc2822_addresses(email_from)
-          adress=adress[-1]
-          domain=adress[adress.index('@')+1:]
-          if domain != defaultdomain:
-              newfrom=email_from.replace(adress,defaultfrom)
-              logger.info('ir_mail_server_b: newfrom: %s', newfrom)
-              email_from=newfrom
+          if defaultdomain:
+              defaultfrom=tools.config.get('mail_from')
+              adress=extract_rfc2822_addresses(email_from)
+              adress=adress[-1]
+              domain=adress[adress.index('@')+1:]
+              if (domain != defaultdomain):
+                  newfrom=email_from.replace(adress,defaultfrom)
+                  logger.info('ir_mail_server_b: changing %s to  %s', email_from, newfrom)
+                  email_from=newfrom
 
           
-          logger.info('ir_mail_server_b: Email_from: %s', email_from)
-          logger.info('ir_mail_server_b: used e-mailaddress: %s, domain=%s', adress,domain)
-          logger.info('ir_mail_server_b: Default domain: %s', defaultdomain)
+          #logger.info('ir_mail_server_b: Email_from: %s', email_from)
+          #logger.info('ir_mail_server_b: used e-mailaddress: %s, domain=%s', adress,domain)
+          #logger.info('ir_mail_server_b: Default domain: %s', defaultdomain)
 
           
           

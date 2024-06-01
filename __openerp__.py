@@ -9,6 +9,10 @@
     Check https://docs.microsoft.com/en-us/exchange/client-developer/legacy-protocols/how-to-authenticate-an-imap-pop-smtp-application-by-using-oauth
     for the creation of an Application
     \nFollow the Use client credentials grant flow to authenticate IMAP and POP connections
+    \n
+    \n Module also contains a fix to set the mailfrom on outgoing e-mails in case it is different from the address specfied in config file
+    \n mail_domain=default outgoing domain
+    \n mail_from=address to be used in case the outgoing domain is different from mail_domain
     """,
 
     'author': "Lubon bvba",
