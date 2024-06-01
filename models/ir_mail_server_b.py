@@ -57,7 +57,9 @@ class ir_mail_server(models.Model):
           if domain != defaultdomain:
               newfrom=email_from.replace(adress,defaultfrom)
               logger.info('ir_mail_server_b: newfrom: %s', newfrom)
+              email_from=newfrom
 
+          
           logger.info('ir_mail_server_b: Email_from: %s', email_from)
           logger.info('ir_mail_server_b: used e-mailaddress: %s, domain=%s', adress,domain)
           logger.info('ir_mail_server_b: Default domain: %s', defaultdomain)
@@ -67,5 +69,5 @@ class ir_mail_server(models.Model):
           msg=super(ir_mail_server, self).build_email( email_from, email_to, subject, body, email_cc, email_bcc, reply_to,
                attachments, message_id, references, object_id, subtype, headers,
                body_alternative, subtype_alternative='plain')
-          #pdb.set_trace()
+          
           return msg
